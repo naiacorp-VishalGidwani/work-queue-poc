@@ -93,13 +93,13 @@ export const TIMELY_FILING_MOCK_DATA_GENERATORS: Record<string, (request: WorkQu
     return faker.date.birthdate()
   },
   'DATE OF SERVICE': (request: WorkQueueRequest) => {
-    return faker.date.between(moment(request.ExpiryEndDate).subtract(1, "month").format('YYYY-MM-DD'), request.ExpiryEndDate);
+    return faker.date.between(moment(request.ExpiryEndDate).subtract(2, "month").toISOString(), request.ExpiryEndDate);
   },
   'PAYER': () => {
     return 'Medicaid';
   },
   'TIMELY FILING WINDOW': (request: WorkQueueRequest) => {
-    return faker.date.between(request.ExpiryEndDate, moment(request.ExpiryEndDate).add(1, "month").format(DATE_FORMAT));
+    return faker.date.between(moment(request.ExpiryEndDate).subtract(1, "month").toISOString(), request.ExpiryEndDate);
   },
   'IS BILLING MESSAGE': () => {
     return 'Yes'
