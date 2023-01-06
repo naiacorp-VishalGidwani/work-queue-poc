@@ -1,8 +1,14 @@
-<div class="row">
-  <div class="col-12 nav-bar">
-    <span class="nav-item" routerLink="/billing/work-queue">Billing - Work Queue</span>
-  </div>
-  <div class="col-12 app-container">
-    <router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 nav-bar p-0">
+      <img class="menu" src="assets/icons/menu.svg" alt="menu"/>
+      <img class="logo" src="https://ehrweb.naiacorp.net/images/CloudCraft.png" alt="CloudCraft">
+      <span class="nav-item text-decoration-underline">Billing</span>
+      <img class="breadcrumb_icon" src="assets/icons/chevron_right.svg" alt=""/>
+      <span class="nav-item">Work Queue</span>
+    </div>
+    <div class="col-12">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

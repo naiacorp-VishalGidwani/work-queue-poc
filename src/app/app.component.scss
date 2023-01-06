@@ -1,15 +1,25 @@
 .nav-bar {
-  background-color: deepskyblue;
+  background-color: #454546;
   color: white;
-  font-weight: bold;
-  padding: 5px;
-  font-size: 1rem;
+  font-size: 0.8rem;
+  height: 35px;
+  display: flex;
+  align-items: center;
+
+  .menu {
+    background-color: #3572C7;
+    height: 100%;
+  }
+
+  .logo {
+    height: 100%;
+  }
+
+  .breadcrumb_icon {
+    height: 60%;
+  }
 
   .nav-item {
     cursor: pointer;
   }
-}
-
-.app-container {
-  padding: 10px 5px;
 }
