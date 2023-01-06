@@ -12,8 +12,24 @@ body {
 }
 
 /* AG Grid */
-.ag-header-cell {
+.ag-header-cell, .ag-header-group-cell {
   background-color: #3E82E1;
+  border-right: 1px solid white;
+}
+.ag-header-cell-text {
+  color: white;
 }
 
+.ag-icon-menu::before {
+  content: var(--ag-icon-font-code-filter, "\f114");
+  color: white;
+}
+
+.ag-cell {
+  border-right: 1px solid #dde2eb !important;
+}
+
+.ag-row-odd {
+  background-color: #F8F7F8 !important;
+}
 

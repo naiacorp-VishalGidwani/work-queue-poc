@@ -10,35 +10,35 @@ import {faker} from "@faker-js/faker";
 export class WorkQueueComponent {
 
   readonly availableColumns = [
-    {field: 'First Name', generateFakeData: faker.name.firstName},
-    {field: 'Last Name', generateFakeData: faker.name.lastName},
+    {field: 'FIRST NAME', generateFakeData: faker.name.firstName},
+    {field: 'LAST NAME', generateFakeData: faker.name.lastName},
     {
       field: 'DOB', generateFakeData: faker.date.birthdate, valueFormatter: (data: any): string => {
         return data.value.toLocaleDateString()
       }
     },
     {
-      field: 'Date of Service', generateFakeData: faker.date.recent, valueFormatter: (data: any): string => {
+      field: 'DATE OF SERVICE', generateFakeData: faker.date.recent, valueFormatter: (data: any): string => {
         return data.value.toLocaleDateString()
       }
     },
     {
-      field: 'Payer', generateFakeData: () => {
+      field: 'PAYER', generateFakeData: () => {
         return 'Medicaid'
       }
     },
     {
-      field: 'Timely Filing Window', generateFakeData: faker.date.future, valueFormatter: (data: any): string => {
+      field: 'TIMELY FILING WINDOW', generateFakeData: faker.date.future, valueFormatter: (data: any): string => {
         return data.value.toLocaleDateString()
       }
     },
     {
-      field: 'Is Billing Message', generateFakeData: () => {
+      field: 'IS BILLING MESSAGE', generateFakeData: () => {
         return 'Yes'
       }
     },
     {
-      field: 'Superbill Billing Status', generateFakeData: () => {
+      field: 'SUPERBILL BILLING STATUS', generateFakeData: () => {
         return 'Pending'
       }
     },
@@ -52,7 +52,13 @@ export class WorkQueueComponent {
   rowData: any[] = [];
 
   constructor() {
-    this.columnDefs = this.availableColumns.map(ac => ({field: ac.field, valueFormatter: ac.valueFormatter}));
+    this.columnDefs = this.availableColumns.map(ac => (
+      {
+        field: ac.field,
+        valueFormatter: ac.valueFormatter,
+        filter: true
+      }
+    ));
     this.rowData = this.generateRowData(30);
   }
 
