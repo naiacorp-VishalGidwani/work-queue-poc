@@ -5,7 +5,7 @@ import {WorkQueueComponent} from "./work-queue/work-queue.component";
 
 const routes: Routes = [
   { path: '', component: BillingComponent },
-  { path: 'work-queue', component: WorkQueueComponent}
+  { path: 'timely-filing-work-queue', component: WorkQueueComponent}
 ];
 
 @NgModule({

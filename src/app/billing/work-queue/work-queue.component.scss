@@ -6,6 +6,10 @@ ag-grid-angular {
 .filter-container {
   display: inline-block;
   margin-right: 20px;
+
+  input {
+    width: 200px;
+  }
 }
 
 label {

@@ -12,6 +12,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.router.navigate(['/billing/work-queue'])
+    this.router.navigate(['/billing/timely-filing-work-queue'])
   }
 }
