@@ -1,5 +1,6 @@
 export type WorkQueueRequest = {
-  ExpiryEndDate: string,
+  FilingExpiryStartDate: string,
+  FilingExpiryEndDate: string,
   Fields: string[]
 }
 

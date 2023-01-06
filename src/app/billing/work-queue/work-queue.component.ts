@@ -23,12 +23,13 @@ export class WorkQueueComponent {
     this.filingExpiryStartDate = moment().format(DATE_FORMAT);
     this.filingExpiryEndDate = moment().add(1, 'months').format(DATE_FORMAT);
 
-    this.init();
+    this.onFilterUpdate();
   }
 
-  private init() {
+  onFilterUpdate() {
     const request: WorkQueueRequest = {
-      ExpiryEndDate: this.filingExpiryEndDate,
+      FilingExpiryStartDate: this.filingExpiryStartDate,
+      FilingExpiryEndDate: this.filingExpiryEndDate,
       Fields: this.columnDefs.map(cd => cd.field || '')
     };
 

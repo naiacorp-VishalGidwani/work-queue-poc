@@ -3,11 +3,11 @@
     <div class="col-12">
       <div class="filter-container">
         <label for="expiry-start-date">FILING EXPIRY START DATE</label><br>
-        <input id="expiry-start-date" type="date" [(ngModel)]="filingExpiryStartDate">
+        <input id="expiry-start-date" type="date" [(ngModel)]="filingExpiryStartDate" (ngModelChange)="onFilterUpdate()">
       </div>
       <div class="filter-container">
         <label for="expiry-end-date">FILING EXPIRY END DATE</label><br>
-        <input id="expiry-end-date" type="date" [(ngModel)]="filingExpiryEndDate">
+        <input id="expiry-end-date" type="date" [(ngModel)]="filingExpiryEndDate" (ngModelChange)="onFilterUpdate()">
       </div>
     </div>
 
