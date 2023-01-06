@@ -49,7 +49,8 @@ export class WorkQueueComponent {
       maxWidth: 75,
       cellRenderer: ImageCellRendererComponent,
       cellRendererParams: {
-        iconName: 'mail.svg'
+        iconFileName: 'mail.svg',
+        title: 'Send Message to Coder'
       },
     },
     {
@@ -57,7 +58,8 @@ export class WorkQueueComponent {
       maxWidth: 75,
       cellRenderer: ImageCellRendererComponent,
       cellRendererParams: {
-        iconName: 'add_box.svg'
+        iconFileName: 'add_box.svg',
+        title: 'Add to Billing Batch'
       },
     },
     {
@@ -65,7 +67,8 @@ export class WorkQueueComponent {
       maxWidth: 75,
       cellRenderer: ImageCellRendererComponent,
       cellRendererParams: {
-        iconName: 'description.svg'
+        iconFileName: 'description.svg',
+        title: 'View Superbill(s)'
       },
     }
   ];
@@ -88,9 +91,9 @@ export class WorkQueueComponent {
       {
         field: ac.field,
         valueFormatter: ac.valueFormatter,
-        filter: true,
         cellRenderer: ac.cellRenderer,
         cellRendererParams: ac.cellRendererParams,
+        filter: !ac.cellRenderer,
         minWidth: ac.minWidth,
         maxWidth: ac.maxWidth
       }
