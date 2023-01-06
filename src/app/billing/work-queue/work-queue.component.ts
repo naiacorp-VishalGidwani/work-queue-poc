@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
-import {ColDef} from "ag-grid-community";
+import {ColDef, GridReadyEvent} from "ag-grid-community";
 import {faker} from "@faker-js/faker";
+import * as moment from 'moment';
+import {ImageCellRendererComponent} from "../../image-cell-renderer/image-cell-renderer.component";
 
 @Component({
   selector: 'app-work-queue',
@@ -10,38 +12,62 @@ import {faker} from "@faker-js/faker";
 export class WorkQueueComponent {
 
   readonly availableColumns = [
-    {field: 'FIRST NAME', generateFakeData: faker.name.firstName},
-    {field: 'LAST NAME', generateFakeData: faker.name.lastName},
+    {field: 'FIRST NAME', minWidth: 150, generateFakeData: faker.name.firstName},
+    {field: 'LAST NAME', minWidth: 150, generateFakeData: faker.name.lastName},
     {
-      field: 'DOB', generateFakeData: faker.date.birthdate, valueFormatter: (data: any): string => {
+      field: 'DOB', minWidth: 100, generateFakeData: faker.date.birthdate, valueFormatter: (data: any): string => {
         return data.value.toLocaleDateString()
       }
     },
     {
-      field: 'DATE OF SERVICE', generateFakeData: faker.date.recent, valueFormatter: (data: any): string => {
+      field: 'DATE OF SERVICE', minWidth: 100, generateFakeData: faker.date.recent, valueFormatter: (data: any): string => {
         return data.value.toLocaleDateString()
       }
     },
     {
-      field: 'PAYER', generateFakeData: () => {
+      field: 'PAYER', minWidth: 100, generateFakeData: () => {
         return 'Medicaid'
       }
     },
     {
-      field: 'TIMELY FILING WINDOW', generateFakeData: faker.date.future, valueFormatter: (data: any): string => {
+      field: 'TIMELY FILING WINDOW', minWidth: 100, generateFakeData: faker.date.future, valueFormatter: (data: any): string => {
         return data.value.toLocaleDateString()
       }
     },
     {
-      field: 'IS BILLING MESSAGE', generateFakeData: () => {
+      field: 'IS BILLING MESSAGE', minWidth: 50, generateFakeData: () => {
         return 'Yes'
       }
     },
     {
-      field: 'SUPERBILL BILLING STATUS', generateFakeData: () => {
+      field: 'SUPERBILL BILLING STATUS', minWidth: 100, generateFakeData: () => {
         return 'Pending'
       }
     },
+    {
+      field: 'MSG TO CODER ',
+      maxWidth: 75,
+      cellRenderer: ImageCellRendererComponent,
+      cellRendererParams: {
+        iconName: 'mail.svg'
+      },
+    },
+    {
+      field: 'ADD TO BB',
+      maxWidth: 75,
+      cellRenderer: ImageCellRendererComponent,
+      cellRendererParams: {
+        iconName: 'add_box.svg'
+      },
+    },
+    {
+      field: 'VIEW SB',
+      maxWidth: 75,
+      cellRenderer: ImageCellRendererComponent,
+      cellRendererParams: {
+        iconName: 'description.svg'
+      },
+    }
   ];
 
   defaultColDef = {
@@ -51,12 +77,22 @@ export class WorkQueueComponent {
   columnDefs: ColDef[];
   rowData: any[] = [];
 
+  expiryStartDate;
+  expiryEndDate;
+
   constructor() {
+    this.expiryStartDate = moment().format('YYYY-MM-DD');
+    this.expiryEndDate = moment().add(1, 'months').format('YYYY-MM-DD');
+
     this.columnDefs = this.availableColumns.map(ac => (
       {
         field: ac.field,
         valueFormatter: ac.valueFormatter,
-        filter: true
+        filter: true,
+        cellRenderer: ac.cellRenderer,
+        cellRendererParams: ac.cellRendererParams,
+        minWidth: ac.minWidth,
+        maxWidth: ac.maxWidth
       }
     ));
     this.rowData = this.generateRowData(30);
@@ -67,7 +103,9 @@ export class WorkQueueComponent {
     for (let i = 0; i < rowCount; i++) {
       const row: any = {};
       this.availableColumns.forEach(ac => {
-        row[ac.field] = ac.generateFakeData();
+        if (ac.generateFakeData) {
+          row[ac.field] = ac.generateFakeData();
+        }
       })
       rowData.push(row);
     }
@@ -78,4 +116,7 @@ export class WorkQueueComponent {
     return rowData;
   }
 
+  onGridReady($event: GridReadyEvent<any>) {
+    $event.api.sizeColumnsToFit();
+  }
 }

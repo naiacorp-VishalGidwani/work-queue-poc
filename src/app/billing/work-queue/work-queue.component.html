@@ -1,8 +1,20 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
+      <div class="filter-container">
+        <label for="expiry-start-date">EXPIRY START DATE</label><br>
+        <input id="expiry-start-date" type="date" [(ngModel)]="expiryStartDate">
+      </div>
+      <div class="filter-container">
+        <label for="expiry-end-date">EXPIRY END DATE</label><br>
+        <input id="expiry-end-date" type="date" [(ngModel)]="expiryEndDate">
+      </div>
+    </div>
+
+    <div class="col-12 mt-3">
       <ag-grid-angular
         class="ag-theme-alpine"
+        (gridReady)="onGridReady($event)"
         [rowData]="rowData"
         [columnDefs]="columnDefs"
         [defaultColDef]="defaultColDef"

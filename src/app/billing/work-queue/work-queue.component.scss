@@ -1,4 +1,14 @@
 ag-grid-angular {
-  height: 450px;
+  height: 700px;
   width: 100%;
+}
+
+.filter-container {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+label {
+  font-size: .8rem;
+  font-weight: bold;
 }
