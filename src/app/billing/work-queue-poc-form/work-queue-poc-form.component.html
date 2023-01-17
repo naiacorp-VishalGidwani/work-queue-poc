@@ -1,0 +1,83 @@
+<div class="container">
+  <h2 class="header text-center">WORK QUEUE</h2>
+  <div class="body" *ngFor="let data of formData">
+    <div class="">NAME : {{data.Name}}</div>
+    <div class="">DESCRIPTION : {{data.Description}}</div>
+
+    <div class="roles d-flex mt-4">
+      <div class="available">
+        <h4>Available Roles</h4>
+        <div>
+          <div *ngFor="let roles of data.VisibleForRoles; let $rolesIndex = index">
+            <span>{{roles}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="selected">
+        <h4>Selected Roles</h4>
+        <div>
+          <div *ngFor="let roles of data.VisibleForRoles; let $rolesIndex = index">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collections d-flex mt-4">
+      <div class="available">
+        <h4>Available Collections</h4>
+        <div>
+          <div *ngFor="let collection of data.Collections">
+            <span>{{collection}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="selected">
+        <h4>Selected Collections</h4>
+        <div>
+          <div *ngFor="let collection of data.Collections">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fields d-flex mt-4">
+      <div class="available">
+        <h4>Available Fields</h4>
+        <div>
+          <div *ngFor="let field of data.Fields">
+            <span>{{field.Field}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="selected">
+        <h4>Selected Fields</h4>
+        <div>
+          <div *ngFor="let field of data.Fields">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions d-flex mt-4">
+      <div class="available">
+        <h4>Available Actions</h4>
+        <div>
+          <div *ngFor="let action of data.Actions">
+            <span>{{action.Action}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="selected">
+        <h4>Selected Actions</h4>
+        <div>
+          <div *ngFor="let action of data.Actions">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
