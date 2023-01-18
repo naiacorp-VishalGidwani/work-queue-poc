@@ -1,0 +1,29 @@
+.selected{
+    margin-left: 20px;
+}
+
+.body > div {
+  width: 400px;
+
+  & input {
+    width: 200px;
+  }
+}
+
+.data-container{
+  border: 1px solid black;
+  padding: 10px;
+  width: 220px;
+  min-height: 100px;
+
+  & div{
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  & div:hover{
+    background: #D3D3D3;
+  }
+}
