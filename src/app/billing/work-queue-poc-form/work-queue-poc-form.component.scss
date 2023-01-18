@@ -18,5 +18,12 @@
 
   & div{
     cursor: pointer;
+    transition: 0.3s ease;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  & div:hover{
+    background: #D3D3D3;
   }
 }
